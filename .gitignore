@@ -1,0 +1,8 @@
+myenv/
+.env
+data/cache/
+data/uploads/
+cv_cache/
+__pycache__/
+*.pyc
+.vscode/
