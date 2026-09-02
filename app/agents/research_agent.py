@@ -21,7 +21,7 @@ def research_company_and_prep_questions(company_name: str, job_title: str) -> Co
     system_prompt = (
         "Tu es un consultant en préparation d'entretiens d'embauche. "
         "À partir des résultats de recherche web sur une entreprise et de l'intitulé du poste, "
-        "analyse l'actualité de l'entreprise et génère des questions stratégiques à poser en entretien."
+        "analyse l'actualité de l'entreprise et génère des questions stratégiques à poser en entretien ainsi que deux questions bonnes à poser lors d'un entretiens en général."
     )
 
     user_prompt = (
@@ -31,13 +31,13 @@ def research_company_and_prep_questions(company_name: str, job_title: str) -> Co
     )
 
     response = client.beta.chat.completions.parse(
-        model="gpt-4o-mini",
+        model="gpt-5-mini",
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt}
         ],
         response_format=CompanyAnalysis,
-        temperature=0.3
+        #temperature=0.3
     )
 
     return response.choices[0].message.parsed

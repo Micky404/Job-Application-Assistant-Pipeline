@@ -23,13 +23,13 @@ def generate_strategic_project(
     )
 
     response = client.beta.chat.completions.parse(
-        model="gpt-4o-mini",
+        model="gpt-5-mini",
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt}
         ],
         response_format=TechnicalProject,
-        temperature=0.4
+        #temperature=0.4
     )
 
     return response.choices[0].message.parsed
