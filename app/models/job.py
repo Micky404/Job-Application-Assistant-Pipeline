@@ -1,10 +1,10 @@
 from pydantic import BaseModel, Field
-from typing import List
+from typing import List, Optional
 
 # --- Modèle pour le Faux Projet ---
 class TechnicalProject(BaseModel):
     title: str = Field(description="Titre percutant et technique du projet.")
-    pitch: str = Field(description="Résumé en 2 phrases du projet et de sa valeur métinement.")
+    pitch: str = Field(description="Résumé en 2 phrases du projet et de sa valeur métier.")
     target_skill_gap: str = Field(description="La compétence clé de l'offre que ce projet vise à crédibiliser.")
     tech_stack: List[str] = Field(description="Technologies, frameworks et outils utilisés (ex: Python, FastAPI, ChromaDB, Docker).")
     key_metrics: List[str] = Field(description="3 métriques chiffrées crédibles à citer à l'oral (ex: 'Latence réduite sous 80ms').")
@@ -39,3 +39,18 @@ class TechnicalQAPrep(BaseModel):
     questions_and_answers: List[TechnicalQAItem] = Field(
         description="Liste de 5 questions/réponses techniques ciblées sur la fiche de poste."
     )
+
+
+class JobOffer(BaseModel):
+    company_name: str = Field(
+        description="Nom exact de l'entreprise recruteuse tel qu'il apparaît dans l'offre. Si introuvable, utiliser 'Entreprise'."
+    )
+    job_title: str = Field(
+        description="Intitulé précis du poste. Si introuvable, utiliser 'Poste visé'."
+    )
+
+
+class ProcessJobRequest(BaseModel):
+    job_description: str
+    company_name: Optional[str] = None
+    job_title: Optional[str] = None

@@ -2,6 +2,7 @@ myenv/
 .env
 data/cache/
 data/uploads/
+data/applications/*.json
 cv_cache/
 __pycache__/
 *.pyc
